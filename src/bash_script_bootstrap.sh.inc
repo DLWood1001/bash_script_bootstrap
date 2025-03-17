@@ -12,7 +12,7 @@
 # Version: 1.0
 #
 # Functions:
-#   - example-function           An example function for processing input flags,
+#   - example-function          An example function for processing input flags,
 #                               positional arguments, and validating parameters.
 #
 # Usage: This file is intended to be sourced by other shell scripts or sourced

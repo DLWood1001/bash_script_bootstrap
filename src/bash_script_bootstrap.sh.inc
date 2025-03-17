@@ -7,7 +7,7 @@
 #              as a bootstrap for building other functions or scripts that need
 #              to process command-line input.
 #
-# Author: Daniel Wood <daniel.l.wood@gmail.com>
+# Author: John Doe <johndoe@example.com>
 # Date: 09-03-2025
 # Version: 1.0
 #

@@ -1,6 +1,20 @@
 # bash_script_bootstrap.sh.inc
 
-This script contains an example function, `example-function`, that demonstrates how to process input parameters, handle flags, positional arguments, and validate user input in shell scripts. It serves as a template for building other functions or scripts that require command-line input processing.
+## Scripting Approach
+
+Included are example notes for general bash scripting. While AI could
+generate these for you, I prefer diving into a repo, using it as a
+bootstrap, and tweaking it to fit my needs with AI assisting via
+auto-completion. My approach is a bootstrap → refactor cycle for bash
+scripts. These notes reflect my personal preferences, even if not
+explicitly mentioned. For instance, I quote strings like "${xxx}" and
+use curly braces. Working directly in a repo allows me to experiment
+quickly and move past the perceived messiness of bash scripting.
+
+This script contains an example function, `example-function`, that demonstrates
+how to process input parameters, handle flags, positional arguments, and
+validate user input in shell scripts. It serves as a template for building
+other functions or scripts that require command-line input processing.
 
 ## Features
 

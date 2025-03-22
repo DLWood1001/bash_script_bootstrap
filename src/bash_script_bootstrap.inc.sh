@@ -7,7 +7,7 @@
 #              as a bootstrap for building other functions or scripts that need
 #              to process command-line input.
 #
-# Author: Daniel Wood <daniel.wood@gmail.com>
+# Author: John Doe <johndoe@example.com>
 # Date: 09-03-2025
 # Version: 1.0
 #
@@ -27,11 +27,6 @@
 # Dependencies:
 #   - bash shell
 # -----------------------------------------------------------------------------
-if [[ -v "${_BOOTSTRAP_LIB}" ]]; then
-  return 0
-fi
-
-export _BOOTSTRAP_LIB=1
 
 
 # example-function
@@ -137,6 +132,111 @@ example-function() {
 
   # Disable case-insensitive matching
   shopt -u nocasematch
+
+  # Variables
+  # =========
+
+  # Arithmetic operations
+  # =====================
+  ((my_add = 1 + 2))  # Creates my_add as global
+  local my_add=$((1 + 2))  # Creates my_add as local
+
+
+  # Array variables
+  # ===============
+  # Example: Array declaration
+  local my_array1=("1" "2" "3" "4" "5")
+  local my_array2=(
+    "1"
+    "2"
+    "3"
+    "4"
+    "5"
+  )
+
+  # Example: Array access operations
+  echo "Whole array1: ${my_array1[@]}"  # Print whole array1
+  echo "Item 0 (first element): ${my_array1[0]}"  # Print first element
+  echo "Item 1 (second element): ${my_array1[1]}"  # Print second element
+  echo "array1 Indexes: ${!my_array1[@]}"  # Print indexes of array1
+
+  # Example: array1 update operations
+  my_array1[0]="foo"  # Update element
+  my_array1+=("4")    # Append element to array1
+
+
+  # if statement
+  # ============
+  # Example: If statement in bash using [[ ]] built-in
+  # Note: Unnecessary to use quotes around variables
+  # Note: Use == for string comparison
+  # Note: Use -gt -lt -eq for integer comparison
+  # Note: Use -gt -lt -eq for integer comparison
+  # Note: Use -f -d -e for file/directory and existence checks
+  # Note: Use && || ! for logical AND, OR, NOT
+  # Note: Use -z empty -n not empty
+  # Note: Use [[ "a_b_c" == a_*_c ]] for pattern matching
+  # Note: Use [[ "a_b_c" =~ ^a_.*_c$ ]] for regex matching
+  # Note: [ ] is posix shell syntax, I probably don't care about it at the
+  #       moment. It is not as powerful as [[ ]] and has some slight syntax
+  #       differences.
+  if [[ "${first}" == true ]]; then
+    echo "First option is enabled."
+  elif [[ "${second}" == true ]]; then
+    echo "Second option is enabled."
+  else
+    echo "No options are enabled."
+  fi
+
+
+  # for loop
+  # =========
+  local my_for_array=("a" "b" "c" "d" "e")
+
+  # Example: For loop to iterate over an array
+  for item in "${my_for_array[@]}"; do
+    echo "Param: ${item}"
+  done
+
+  # Example: For loop to iterate over an array with indexes
+  for index in "${!my_for_array[@]}"; do
+    echo "Index: ${index}, Param: ${my_for_array[index]}"
+  done
+
+  # while loop
+  # ==========
+
+  # Example: While loop to iterate over an array
+  # Note: Use IFS= to prevent leading/trailing whitespace from being trimmed
+  local count=1
+
+  while [[ ${count} -le 5 ]]
+  do
+    echo "Number: $count"
+    ((count++))
+  done
+
+
+  # IFS (Internal Field Separator)
+  # ==============================
+
+  # Save the original IFS
+  local old_ifs=$IFS
+
+  # Set IFS to a comma
+  IFS=','
+
+  local my_input="apple,banana,cherry"
+
+  # Read the string into an array
+  read -ra fruits <<< "${input}"
+
+  for fruit in "${fruits[@]}"; do
+    echo "${fruit}"
+  done
+
+  # Reset IFS back to its original value
+  IFS=${old_ifs}
 
   # Note: Further processing of the input parameters and validation goes here
   # ...
